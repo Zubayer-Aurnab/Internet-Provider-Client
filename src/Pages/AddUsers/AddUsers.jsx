@@ -1,7 +1,8 @@
+import axios from "axios";
 
 
 const AddUsers = () => {
-    const handelAddUsers = (e) => {
+    const handelAddUsers =async (e) => {
         e.preventDefault()
         const form = e.target
         const name = form.name.value
@@ -9,9 +10,12 @@ const AddUsers = () => {
         const number = form.number.value
         const address = form.address.value
         const subscription = form.subscription.value
-
-        console.log({ name, userName, number, address, subscription })
-        form.reset()
+        const customer = { name, userName, number, address, subscription }
+        console.log(customer)
+        const res = await axios.post("http://localhost:5000/customers",customer)
+        // .then(res=> console.log(res.data))
+        console.log(res.data.insertedId)
+      
     }
     return (
         <div className="p-4 ">
