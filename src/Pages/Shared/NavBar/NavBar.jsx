@@ -36,7 +36,7 @@ const NavBar = ({children}) => {
     </>
     return (
         <>
-            <div className=' lg:px-36 mt-2 '>
+            <div className=' lg:px-36 lg:mt-2 '>
                 <div className="drawer">
 
                     <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />

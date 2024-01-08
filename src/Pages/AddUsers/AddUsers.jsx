@@ -1,22 +1,41 @@
 import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const AddUsers = () => {
-    const handelAddUsers =async (e) => {
-        e.preventDefault()
-        const form = e.target
-        const name = form.name.value
-        const userName = form.username.value
-        const number = form.number.value
-        const address = form.address.value
-        const subscription = form.subscription.value
-        const customer = { name, userName, number, address, subscription }
-        console.log(customer)
-        const res = await axios.post("http://localhost:5000/customers",customer)
-        // .then(res=> console.log(res.data))
-        console.log(res.data.insertedId)
-      
-    }
+    const handelAddUsers = async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const userName = form.username.value;
+        const number = form.number.value;
+        const address = form.address.value;
+        const subscription = form.subscription.value;
+        const status = "paid"
+
+        // Get today's date in the format YYYY-MM-DD
+        const today = new Date();
+        const joiningDate = today.toISOString().split('T')[0];
+
+        const customer = { name, userName, number, address, subscription, joiningDate,status };
+        console.log(customer);
+
+        try {
+            const res = await axios.post("http://localhost:5000/customers", customer);
+            if (res.data.insertedId) {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: " User has been Added",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                form.reset()
+            }
+        } catch (error) {
+            console.error("Error adding customer:", error);
+        }
+    };
     return (
         <div className="p-4 ">
             <div className=" w-full lg:w-1/2 mx-auto border-2 border-primary rounded-2xl p-4 mt-[10%]">
