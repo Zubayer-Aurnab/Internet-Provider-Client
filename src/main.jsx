@@ -13,6 +13,7 @@ import './index.css';
 import AddUsers from './Pages/AddUsers/AddUsers.jsx';
 import DashBoard from './Pages/DashBoard/DashBoard.jsx';
 import Home from './Pages/Home/Home.jsx';
+import Details from './Pages/Details/Details.jsx';
 
 // Create a client
 const queryClient = new QueryClient()
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <DashBoard />
+      },
+      {
+        path: '/details/:id',
+        element: <Details />,
+        loader: ({ params }) => fetch(`http://localhost:5000/customer/${params.id}`)
       }
     ]
   },
