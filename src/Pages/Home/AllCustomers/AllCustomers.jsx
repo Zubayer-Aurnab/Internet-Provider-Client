@@ -27,13 +27,13 @@ const AllCustomers = () => {
                                     >
                                         <div className="card-body">
                                             <div className="flex gap-2 items-center ">
-                                                <h2 className="card-title text-sm md:text-xl">{customer.name}</h2>
-                                                {
+                                                <h2 className="card-title text-sm md:text-xl">{customer.name} {
                                                     customer.status === "paid" ?
                                                         <span className="w-2 h-2  bg-green-700 rounded-full "></span>
                                                         :
                                                         <span className="w-2 h-2  bg-red-600 rounded-full "></span>
-                                                }
+                                                } </h2>
+
                                             </div>
                                             <p className="text-xs text-gray-400">{customer.address}</p>
 
