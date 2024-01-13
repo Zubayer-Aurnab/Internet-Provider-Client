@@ -1,8 +1,21 @@
 import axios from "axios";
 import Swal from "sweetalert2";
-
+import { useState } from 'react';
+import { MonthPicker, MonthInput } from 'react-lite-month-picker';
 
 const AddUsers = () => {
+    const currentDate = new Date();
+    const [selectedMonthData, setSelectedMonthData] = useState({
+        month: currentDate.getMonth() + 1,
+        year: currentDate.getFullYear(),
+    });
+    const [isPickerOpen, setIsPickerOpen] = useState(false);
+    const handleMonthPickerClick = (e) => {
+        // Prevent the click event from reaching the form
+        e.stopPropagation();
+        // Toggle the MonthPicker visibility
+        setIsPickerOpen(!isPickerOpen);
+    };
     const handelAddUsers = async (e) => {
         e.preventDefault();
         const form = e.target;
@@ -12,29 +25,30 @@ const AddUsers = () => {
         const address = form.address.value;
         const subscription = form.subscription.value;
         const status = "paid"
+        const paymentMonth = selectedMonthData
 
         // Get today's date in the format YYYY-MM-DD
         const today = new Date();
         const joiningDate = today.toISOString().split('T')[0];
 
-        const customer = { name, userName, number, address, subscription, joiningDate,status };
+        const customer = { name, userName, number, address, subscription, joiningDate, status, paymentMonth };
         console.log(customer);
 
-        try {
-            const res = await axios.post("http://localhost:5000/customers", customer);
-            if (res.data.insertedId) {
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: " User has been Added",
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-                form.reset()
-            }
-        } catch (error) {
-            console.error("Error adding customer:", error);
-        }
+        // try {
+        //     const res = await axios.post("http://localhost:5000/customers", customer);
+        //     if (res.data.insertedId) {
+        //         Swal.fire({
+        //             position: "center",
+        //             icon: "success",
+        //             title: " User has been Added",
+        //             showConfirmButton: false,
+        //             timer: 1500
+        //         });
+        //         form.reset()
+        //     }
+        // } catch (error) {
+        //     console.error("Error adding customer:", error);
+        // }
     };
     return (
         <div className="p-4 ">
@@ -119,14 +133,37 @@ const AddUsers = () => {
                             </select>
                         </div>
                     </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 md:gap-11">
+                        <div >
+                            <h1 className="mb-2">Payment Till</h1>
+                            <div onClick={handleMonthPickerClick}>
+                                <MonthInput
+                                    selected={selectedMonthData}
+                                    setShowMonthPicker={setIsPickerOpen}
+                                    showMonthPicker={isPickerOpen}
+                                    size="small"
+                                />
+                            </div>
+                            {isPickerOpen ? (
+                                <MonthPicker
+                                    setIsOpen={setIsPickerOpen}
+                                    selected={selectedMonthData}
+                                    onChange={setSelectedMonthData}
+                                    size="small"
+                                />
+                            ) : null}
+                        </div>
+                    </div>
 
+                    <div className="w-1/2 mx-auto mt-10">
 
-                    <button
-                        type="submit"
-                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-10"
-                    >
-                        Submit
-                    </button>
+                        <button
+                            type="submit"
+                            className="btn btn-primary w-full"
+                        >
+                            Submit
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
