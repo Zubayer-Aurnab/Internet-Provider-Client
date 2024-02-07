@@ -52,7 +52,7 @@ const AddUsers = () => {
     };
     return (
         <div className="p-4 ">
-            <div className=" w-full lg:w-1/2 mx-auto border-2 border-primary rounded-2xl p-4 mt-[10%]">
+            <div className=" w-full lg:w-1/2 mx-auto border-2 border-primary rounded-2xl p-4 mt-[10%] bg-red-200">
                 <form
                     onSubmit={handelAddUsers}
                     className="">
