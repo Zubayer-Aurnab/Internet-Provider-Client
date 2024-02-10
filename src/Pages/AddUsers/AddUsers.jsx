@@ -57,6 +57,7 @@ const AddUsers = () => {
                     onSubmit={handelAddUsers}
                     className="">
                     <h1 className="text-2xl font-bold text-primary mb-10 ">Add User</h1>
+                    <h1 className="text-2xl font-bold text-primary mb-10 ">Add User</h1>
                     <div className="relative z-0 w-full mb-6 group">
                         <input
                             type="text"
