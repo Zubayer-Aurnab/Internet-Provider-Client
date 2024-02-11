@@ -1,5 +1,5 @@
 
-
+import "./Banner.css"
 
 
 const Banner = () => {
@@ -12,7 +12,7 @@ const Banner = () => {
                     <div className="mb-5">
                         <input type="text" placeholder="User Name ..." className="input input-bordered input-primary w-full text-black font-bold" />
                     </div>
-                    <button className="btn btn-outline btn-success btn-sm lg:btn-md">Search</button>
+                    <button className="btn btn-sm lg:btn-md paperScrollPaper">Search</button>
                 </div>
             </div>
         </div>
