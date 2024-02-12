@@ -10,7 +10,7 @@ const Banner = () => {
                 <div className="w-full">
                     <h1 className="mb-5 text-3xl lg:text-5xl font-bold text-white">Search User</h1>
                     <div className="mb-5">
-                        <input type="text" placeholder="User Name ..." className="input input-bordered input-primary w-full text-black font-bold" />
+                        <input type="text" placeholder="User Name ..." className="input input-bordered input-primary w-full text-black font-bold paperScrollPaper" />
                     </div>
                     <button className="btn btn-sm lg:btn-md paperScrollPaper">Search</button>
                 </div>
