@@ -13,6 +13,7 @@ const Banner = () => {
                         <input type="text" placeholder="User Name ..." className="input input-bordered input-primary w-full text-black font-bold paperScrollPaper" />
                     </div>
                     <button className="btn btn-sm lg:btn-md paperScrollPaper">Search</button>
+                    <button className="btn btn-sm lg:btn-md paperScrollPaper">!!</button>
                 </div>
             </div>
         </div>
