@@ -14,6 +14,7 @@ const Banner = () => {
                     </div>
                     <button className="btn btn-sm lg:btn-md paperScrollPaper">Search</button>
                     <button className="btn btn-sm lg:btn-md paperScrollPaper">!!</button>
+                    <button className="btn btn-sm lg:btn-md paperScrollPaper">!!asa</button>
                 </div>
             </div>
         </div>
